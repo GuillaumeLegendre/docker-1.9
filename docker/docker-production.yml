@@ -1,0 +1,7 @@
+db:
+  restart: always
+web:
+  command: bundle exec puma -C /myapp/config/puma.rb -p 3000 -e production
+  restart: always
+nginx:
+  restart: always

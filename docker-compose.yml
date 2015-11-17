@@ -1,0 +1,17 @@
+db:
+  image: postgres
+nginx:
+  build: ./docker/container/nginx
+  links:
+    - web
+  ports:
+    - "80:80"
+web:
+  build: .
+  command: bundle exec puma -C /myapp/config/puma.rb -p 3000
+  volumes:
+    - .:/myapp
+  ports:
+    - "3000:3000"
+  links:
+    - db
