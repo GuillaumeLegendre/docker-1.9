@@ -1,8 +1,8 @@
-== README
+# README
 
 This app is a test for using docker from dev to prod.
 
-* [ ] easy first deploy
+* [x] easy first deploy
 
  (no manual install of ruby, nginx, postgresql, gems...)
 
@@ -22,7 +22,7 @@ This app is a test for using docker from dev to prod.
 
 
 
-Wondering
+## Wondering
 
 Can I simplify the restart of docker if the server is shutdown then up again?
 
