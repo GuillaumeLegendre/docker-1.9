@@ -10,7 +10,9 @@ This app is a workflow test for using docker on a rails project from dev to prod
 
 * [x] automate config of necessary processus (nginx)
 
-* [ ] multi-server dev in the same time with easy find url to hit 
+* [ ] multi-server dev in the same time with easy find url to hit  
+
+* [ ] Don't reinstall every gem when the gemfile.lock change
 
 * [ ] remote deployment
 
