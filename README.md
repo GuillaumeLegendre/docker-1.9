@@ -13,7 +13,8 @@ This app is a workflow test for using docker on a rails project from dev to prod
 * [ ] multi-server dev in the same time with easy find url to hit  
 
 * [ ] Don't reinstall every gem when the gemfile.lock change
- 
+http://bradgessler.com/articles/docker-bundler/
+
 * [ ] Be sure of the system use (debian...) and his version
 
 * [ ] Be sure of the lib version install (libpng...)
