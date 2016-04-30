@@ -1,18 +1,31 @@
-FROM ruby:2.2.3-slim
-RUN apt-get update -qq && apt-get install -y \
-    build-essential \
-    libpq-dev \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
-RUN mkdir /myapp
-WORKDIR /myapp
-COPY Gemfile /myapp/Gemfile
-COPY Gemfile.lock /myapp/Gemfile.lock
-RUN bundle install
-# Differentiate production version
-# RUN bundle install --without development test
-COPY . /myapp
+# Image used  from https://hub.docker.com/
+FROM ruby:2.3.0-slim
+MAINTAINER legendre.gui@gmail.com
 
-# Is it ok?
-ONBUILD RUN bundle exec rake db:create db:migrate db:seed
-# ONBUILD RUN RAILS_ENV=production rake db:create db:migrate db:seed
+# TODO use versionning to avoid issue.
+# Package need for the project
+RUN apt-get update -qq && \
+    apt-get install -y build-essential \
+                       # for postgres
+                       # libpq-dev=x.x.x \
+                       libpq-dev \
+                       # for a JS runtime
+                       nodejs \
+                       # for nokogiri
+                       # libxml2-dev libxslt1-dev \
+    # Smaller images
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV APP_HOME /myapp
+
+# Create the folder /myapp in the container
+RUN mkdir $APP_HOME
+# Define the folder /myapp as the working directory (command will be launch from this directory)
+WORKDIR $APP_HOME
+
+# Allow to put the gemfile in a volume https://medium.com/@fbzga/how-to-cache-bundle-install-with-docker-7bed453a5800#.xoqyjqgsw
+ENV BUNDLE_PATH /bundle
+
+# Link the current directory to /myapp in the container
+ADD . $APP_HOME

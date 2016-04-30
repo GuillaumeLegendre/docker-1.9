@@ -1,17 +1,34 @@
+# https://hub.docker.com/_/postgres/
 db:
-  image: "postgres:9.4.5"
+  image: "postgres:9.4"
+
+# the dockerfile to mount the image is in ./docker/container/nginx
 nginx:
   build: ./docker/container/nginx
   links:
-    - web
+    - app
   ports:
     - "80:80"
-web:
+
+# Launch the ruby server
+app:
   build: .
   command: bundle exec puma -C /myapp/config/puma.rb -p 3000
-  volumes:
-    - .:/myapp
   ports:
     - "3000:3000"
   links:
     - db
+  volumes:
+    - .:/myapp
+  # This tells the web container to mount the `bundle` images'
+  # /bundle volume to the `web` containers /bundle path.
+  volumes_from:
+    - bundle
+
+# https://hub.docker.com/_/busybox/
+# no versionning because this container is created only for volume
+bundle:
+  image: "busybox"
+  command: echo "I'm a little data container, who contain all the gems"
+  volumes:
+    - /bundle
