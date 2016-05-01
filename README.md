@@ -6,6 +6,10 @@ $ docker-machine ip default
 
 ip à remplacer par localhost:3000
 
+$ chmod 755 ./docker/docker-start-command.sh
+
+malheureusement je n'arrive pas a faire fonctionner cette commande dans le dockerfile :(
+
 $ docker-compose build
 
 $ docker-compose up
@@ -22,8 +26,6 @@ This app is a workflow test for using docker on a rails project from dev to prod
 https://medium.com/@fbzga/how-to-cache-bundle-install-with-docker-7bed453a5800#.xoqyjqgsw
 
 * [x] Be sure of the lib version install (libpng...)
-
-* [ ] Bug: Aborting when quit and reinstall bundle when he shouldn't
 
 * [ ] multi-server dev in the same time with easy find url to hit
 
