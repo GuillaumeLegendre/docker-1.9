@@ -22,6 +22,8 @@ $ docker-compose run app rake db:create db:migrate db:seed
 
 This app is a workflow test for using docker on a rails project from dev to prod.
 
+* [ ] How byebug is affect should we remote it?
+
 * [x] Don't reinstall every gem when the gemfile.lock change
 https://medium.com/@fbzga/how-to-cache-bundle-install-with-docker-7bed453a5800#.xoqyjqgsw
 
