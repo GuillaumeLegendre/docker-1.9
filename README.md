@@ -23,6 +23,8 @@ This app is a workflow test for using docker on a rails project from dev to prod
 
 * [ ] How byebug is affect should we remote it?
  
+* [ ] Sur linux les ports par défaut rentre en conflict
+ 
 * [ ] Mailcatcher? in a container or in a project mailcatcher?
 
 * [x] Don't reinstall every gem when the gemfile.lock change
