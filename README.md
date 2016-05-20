@@ -9,6 +9,7 @@ ip à remplacer par localhost:3000
 $ chmod 755 ./docker/docker-start-command.sh
 
 malheureusement je n'arrive pas a faire fonctionner cette commande dans le dockerfile :(
+TODO: Changer ./ par sh pour ne plus avoir besoin de cette ligne.
 
 $ docker-compose build
 
