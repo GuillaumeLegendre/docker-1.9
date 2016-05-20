@@ -15,8 +15,6 @@ $ docker-compose build
 
 $ docker-compose up
 
-$ docker-compose run app bundle install
-
 $ docker-compose run app rake db:create db:migrate db:seed
 
 ## Objectif
