@@ -3,5 +3,12 @@ db:
 app:
   command: bundle exec puma -C /myapp/config/puma.rb -p 3000 -e production
   restart: always
+
+# the dockerfile to mount the image is in ./docker/container/nginx
 nginx:
+  build: ./docker/container/nginx
+  links:
+    - app
+  ports:
+    - "80:80"
   restart: always

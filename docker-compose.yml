@@ -2,14 +2,6 @@
 db:
   image: "postgres:9.4"
 
-# the dockerfile to mount the image is in ./docker/container/nginx
-nginx:
-  build: ./docker/container/nginx
-  links:
-    - app
-  ports:
-    - "80:80"
-
 # Launch the ruby server
 app:
   build: .
