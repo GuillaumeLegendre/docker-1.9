@@ -19,13 +19,16 @@ RUN apt-get update -qq && \
 
 ENV APP_HOME /myapp
 
+# Allow to put the gemfile in a volume
+# https://medium.com/@fbzga/how-to-cache-bundle-install-with-docker-7bed453a5800#.xoqyjqgsw
+ENV BUNDLE_PATH /bundle
+
 # Create the folder /myapp in the container
 RUN mkdir $APP_HOME
-# Define the folder /myapp as the working directory (command will be launch from this directory)
-WORKDIR $APP_HOME
 
-# Allow to put the gemfile in a volume https://medium.com/@fbzga/how-to-cache-bundle-install-with-docker-7bed453a5800#.xoqyjqgsw
-ENV BUNDLE_PATH /bundle
+# Define the folder /myapp as the working directory
+# (next command will be launch from this directory)
+WORKDIR $APP_HOME
 
 # Link the current directory to /myapp in the container
 ADD . $APP_HOME

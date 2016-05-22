@@ -13,7 +13,7 @@ nginx:
 # Launch the ruby server
 app:
   build: .
-  command: bundle exec puma -C /myapp/config/puma.rb -p 3000
+  command: sh docker/docker-entrypoint.sh
   ports:
     - "3000:3000"
   links:
