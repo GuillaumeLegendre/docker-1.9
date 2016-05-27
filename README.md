@@ -2,10 +2,6 @@
 
 ## How to use
 
-$ docker-machine ip default
-
-ip à remplacer par localhost:3000
-
 $ docker-compose build
 
 $ docker-compose up
