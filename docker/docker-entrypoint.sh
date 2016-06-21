@@ -9,4 +9,6 @@ bundle check || bundle install
 # we try to remove it at each start of the server.
 rm tmp/pids/server.pid > /dev/null 2> /dev/null
 
-bundle exec puma -C /myapp/config/puma.rb -p 3000
+# bundle exec puma -C /myapp/config/puma.rb -p 3000
+
+bundle exec rails s -p 3000 -b 0.0.0.0
