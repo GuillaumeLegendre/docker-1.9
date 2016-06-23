@@ -8,6 +8,8 @@ app:
   command: sh docker/docker-entrypoint.sh
   ports:
     - "3000:3000"
+  environment:
+  - APP_PORT=3000
   links:
     - db
   volumes:

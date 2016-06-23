@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# TODO : If an error occured (in bundle install for example) every next command will execute...
-# I tried set e but without success
-
+# TODO: Stop the script if an error occured (but don't show error sometimes like when database.yml don't exist)
+# set -e
 
 # First launch of the container gems aren't install so rails command is not known.
 # With double pipe if the first command fail the second is execute.
@@ -13,8 +12,13 @@ bundle check || bundle install
 # we try to remove it at each start of the server.
 rm tmp/pids/server.pid > /dev/null 2> /dev/null
 
+
+
 # Affiche le port externe du serveur web
-echo "TODO: Le port du serveur web est: "
+BLUE='\033[1;34m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+printf "${BLUE}L'adresse du serveur web est: ${GREEN} http://localhost:${APP_PORT} ${NC}\n"
 
 # bundle exec puma -C /myapp/config/puma.rb -p 3000
 bundle exec rails s -p 3000 -b 0.0.0.0

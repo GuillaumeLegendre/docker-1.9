@@ -6,7 +6,7 @@ $ docker-compose build
 
 $ docker-compose up
 
-$ docker-compose run app rake db:create db:migrate db:seed
+$ docker-compose run app bundle exec rake db:create db:migrate db:seed
 
 debugger un container
 $ docker exec -it nom_app /bin/bash
