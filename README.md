@@ -8,13 +8,16 @@ $ docker-compose up
 
 $ docker-compose run app rake db:create db:migrate db:seed
 
+debugger un container
+$ docker exec -it nom_app /bin/bash
+
 ## Objectif
 
 This app is a workflow test for using docker on a rails project from dev to prod.
 
 * [x] How byebug is affect should we remote it?
 * http://stackoverflow.com/questions/31669226/rails-byebug-did-not-stop-application
- 
+
 * [ ] easy git hook management ? http://stackoverflow.com/questions/3462955/putting-git-hooks-into-repository/3464399#3464399
 * https://mpdaugherty.wordpress.com/2010/04/06/how-to-include-git-hooks-in-a-repository-and-still-personalize-your-machine/
 
@@ -25,7 +28,7 @@ This app is a workflow test for using docker on a rails project from dev to prod
 * [ ] Other tool like phpmyadmin,... ?
 
 * [x] Don't reinstall every gem when the gemfile.lock change
-https://medium.com/@fbzga/how-to-cache-bundle-install-with-docker-7bed453a5800#.xoqyjqgsw
+* https://medium.com/@fbzga/how-to-cache-bundle-install-with-docker-7bed453a5800#.xoqyjqgsw
 
 * [x] Be sure of the lib version install (libpng...)
 

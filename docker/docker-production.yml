@@ -1,3 +1,6 @@
+# To override the docker-compose file use this command :
+# $ docker-compose -f docker-compose.yml -f docker/docker-production.yml up -d
+
 db:
   restart: always
 app:

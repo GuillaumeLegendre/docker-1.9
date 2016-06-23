@@ -1,5 +1,5 @@
 # Image used  from https://hub.docker.com/
-FROM ruby:2.3.0-slim
+FROM ruby:2.3.1-slim
 MAINTAINER legendre.gui@gmail.com
 
 # TODO use versionning to avoid issue.

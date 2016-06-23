@@ -16,6 +16,11 @@ app:
   # /bundle volume to the `web` containers /bundle path.
   volumes_from:
     - bundle
+  # Usefull for byebug
+  # $ docker-compose up -d
+  # $ docker attach myappname_app_1
+  stdin_open: true
+  tty: true
 
 # https://hub.docker.com/_/busybox/
 # no versionning because this container is created only for volume
