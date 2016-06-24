@@ -11,6 +11,9 @@ RUN apt-get update -qq && \
                        libpq-dev \
                        # for a JS runtime
                        nodejs \
+                       # for paperclip
+                       imagemagick\
+                       file\
                        # for nokogiri
                        # libxml2-dev libxslt1-dev \
     # Smaller images
