@@ -24,7 +24,7 @@ ENV APP_HOME /myapp
 
 # Allow to put the gemfile in a volume
 # https://medium.com/@fbzga/how-to-cache-bundle-install-with-docker-7bed453a5800#.xoqyjqgsw
-ENV BUNDLE_PATH /bundle
+# ENV GEMS_PATH '/gems'
 
 # Create the folder /myapp in the container
 RUN mkdir $APP_HOME

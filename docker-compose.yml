@@ -10,6 +10,7 @@ services:
   app:
     build: .
     command: sh docker/docker-entrypoint.sh
+    # entrypoint: bundle exec
     ports:
       - "3000:3000"
     environment:
@@ -18,10 +19,10 @@ services:
       - db
     volumes:
       - source_code:/myapp
-    # This tells the web container to mount the `bundle` images'
-    # /bundle volume to the `web` containers /bundle path.
+    # This tells the web container to mount the `gems` image
+    # /gems volume to the `web` containers /gems path.
     volumes_from:
-      - bundle
+      - gems
     # Usefull for byebug
     # $ docker-compose up -d
     # $ docker attach myappname_app_1
@@ -30,11 +31,11 @@ services:
 
   # https://hub.docker.com/_/busybox/
   # no versionning because this container is created only for volume
-  bundle:
+  gems:
     image: "busybox"
     command: echo "I'm a little data container, who contain all the gems"
     volumes:
-      - gems:/bundle
+      - gems:/gems
 
 # name Tag for volumes
 volumes:
