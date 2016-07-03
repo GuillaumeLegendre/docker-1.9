@@ -1,33 +1,46 @@
-# https://hub.docker.com/_/postgres/
-db:
-  image: "postgres:9.4"
+version: '2'
+services:
+  # https://hub.docker.com/_/postgres/
+  db:
+    image: "postgres:9.5"
+    volumes:
+        - pg_data:/var/lib/postgres/data
 
-# Launch the ruby server
-app:
-  build: .
-  command: sh docker/docker-entrypoint.sh
-  ports:
-    - "3000:3000"
-  environment:
-  - APP_PORT=3000
-  links:
-    - db
-  volumes:
-    - .:/myapp
-  # This tells the web container to mount the `bundle` images'
-  # /bundle volume to the `web` containers /bundle path.
-  volumes_from:
-    - bundle
-  # Usefull for byebug
-  # $ docker-compose up -d
-  # $ docker attach myappname_app_1
-  stdin_open: true
-  tty: true
+  # Container of the ruby server
+  app:
+    build: .
+    command: sh docker/docker-entrypoint.sh
+    ports:
+      - "3000:3000"
+    environment:
+    - APP_PORT=3000
+    links:
+      - db
+    volumes:
+      - source_code:/myapp
+    # This tells the web container to mount the `bundle` images'
+    # /bundle volume to the `web` containers /bundle path.
+    volumes_from:
+      - bundle
+    # Usefull for byebug
+    # $ docker-compose up -d
+    # $ docker attach myappname_app_1
+    stdin_open: true
+    tty: true
 
-# https://hub.docker.com/_/busybox/
-# no versionning because this container is created only for volume
-bundle:
-  image: "busybox"
-  command: echo "I'm a little data container, who contain all the gems"
-  volumes:
-    - /bundle
+  # https://hub.docker.com/_/busybox/
+  # no versionning because this container is created only for volume
+  bundle:
+    image: "busybox"
+    command: echo "I'm a little data container, who contain all the gems"
+    volumes:
+      - gems:/bundle
+
+# name Tag for volumes
+volumes:
+  source_code:
+    driver: local
+  pg_data:
+    driver: local
+  gems:
+    driver: local
