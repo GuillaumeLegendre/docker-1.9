@@ -31,6 +31,8 @@ This app is a workflow test for using docker on a rails project from dev to prod
 
 ### Dev
 
+* [ ] Time of container are 2hrs late
+
 * [ ] Can't rake db:drop database is always open !
 
 * [ ] multi-server dev in the same time without port conflict
