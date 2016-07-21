@@ -5,17 +5,23 @@ MAINTAINER legendre.gui@gmail.com
 # TODO use versionning to avoid issue.
 # Package need for the project
 RUN apt-get update -qq && \
-    apt-get install -y build-essential \
-                       # for postgres
-                       # libpq-dev=x.x.x \
-                       libpq-dev \
-                       # for a JS runtime
-                       nodejs \
-                       # for paperclip
-                       imagemagick\
-                       file\
-                       # for nokogiri
-                       # libxml2-dev libxslt1-dev \
+    apt-get install -y  build-essential \
+                        # for postgres
+                        # libpq-dev=x.x.x \
+                        libpq-dev \
+                        # for mysql
+                        libmysqld-dev\
+                        # for a JS runtime
+                        nodejs \
+                        # for paperclip
+                        imagemagick\
+                        file\
+                        # for nokogiri (necessary? both?)
+                        # libxml2-dev libxslt1-dev \
+                        # for imagemagic (necessary?)
+                        # libmagickwand-dev\
+                        # for install gems from github
+                        # git
     # Smaller images
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
