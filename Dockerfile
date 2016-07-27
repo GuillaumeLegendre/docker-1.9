@@ -42,6 +42,9 @@ WORKDIR $APP_HOME
 # Link the current directory to /myapp in the container
 ADD . $APP_HOME
 
+# parallel install gems https://robots.thoughtbot.com/parallel-gem-installing-using-bundler
+RUN gem install bundler && bundle config --global --jobs $(expr $(nproc) - 1)
+
 # Configure an entry point, so we don't need to specify
 # "bundle exec" for each of our commands.
 # ENTRYPOINT ["bundle", "exec"]
