@@ -35,6 +35,12 @@ This app is a workflow test for using docker on a rails project from dev to prod
 
 * [ ] Can't rake db:drop database is always open !
 
+* [ ] rails new project, procedure
+
+* [ ] cap production deploy not working i think
+
+* [ ] how to open server on same reseau `rails s -b 0.0.0.0`
+
 * [ ] multi-server dev in the same time without port conflict
 
 * [ ] Mailcatcher? in a container or in a project mailcatcher?
